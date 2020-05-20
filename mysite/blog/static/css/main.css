@@ -1,0 +1,135 @@
+body
+{
+	margin: 0px;
+}
+.back
+{
+	background-image: url("img/back.png");
+	background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+}
+.main-heading
+{
+	text-align: center;
+	font-size: 3em;
+	margin:0px;
+	padding: 16px 0;
+}
+.nav-bar
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+  	overflow: hidden;
+  	background-color: #333;
+
+}
+.nav-bar-item
+{
+	float: left;
+}
+.nav-bar-item-link
+{
+	display: block;
+	/*padding: 10px;*/
+    padding: 14px 16px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+}
+.nav-bar-item-link:hover
+{
+	background-color: #111;
+}
+.foo
+{
+  width: 100%;
+  margin:0px;
+  background-color: #333;
+  color: white;
+  overflow: hidden;
+}
+.foo-nav-bar-item-link
+{
+	display: block;
+    padding: 14px 16px;
+	color: white;
+	text-decoration: none;
+}
+/*Above all base css*/
+.body-back
+{
+	background-color: rgba(0,0,125,0.1);
+	margin:0;
+	padding: 10px;
+	min-height: 500px;
+}
+
+.form-class
+{
+	text-align: center;
+}
+.form
+{
+	text-align: center;
+	justify-content: center;
+	display: grid;
+	padding: 20px;
+	border:solid 1px black;
+	background-color: rgba(20,20,20,0.1);
+}
+.row{
+	display: table-row;
+}
+
+.article-thumbnail
+{
+	margin:5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 10px;
+	border:solid 1px black;
+	border-radius: 5px;
+	background-color: rgba(20,20,20,0.1); 
+	box-shadow: 10px 10px 5px grey;
+}
+
+.general-a
+{
+	text-decoration: none;
+	color: rgba(15,0,15,0.9);
+	font-weight: 900;
+}
+.general-a:hover
+{
+	font-weight: bolder;
+	text-shadow: 3px 3px 5px grey;	
+	
+}
+.small
+{
+	font-size: smaller;
+}
+/*BUTTON*/
+.button {
+  background-color: #333;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.button:hover {
+	background-color: #111;
+}
+.button2 {
+  transition-duration: 0.4s;
+}
+
+.button2:hover {
+  background-color: rgba(0,0,125,0.5); 
+  color: white;
+}

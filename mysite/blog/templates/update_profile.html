@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+{%block title%}{{ user.username }}{%endblock%}
+{% block content %}
+<div style="display: table; padding: 5px; margin:5px;">
+	<p style="display: table-row;">Hello {{user.first_name}},</p>
+</div>
+<p style="padding: 3px;">1.Change First Name or Last Name Below</p>
+<form  method="post" class="form">
+			{% for field in form %}
+			       <div class="row">
+					{{field.name|lower|capfirst}}&nbsp&nbsp&nbsp{{field}}<br><br>
+			       </div>
+			{% endfor %}
+			{% csrf_token %}
+			<button class="button" type="submit">Update</button>
+		</form>
+		<br>
+<p style="padding: 3px;">2.Change Password Below</p>
+<p><a class="general-a" style="padding:5px;border:solid 1px black; background-color: rgba(20,20,20,0.1); box-shadow: 5px 5px grey" href="{% url 'password_change' %}">Change Password</a></p>
+
+{%endblock%}

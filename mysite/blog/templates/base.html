@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>{%block title%}My Blog{%endblock%}</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+	
+</head>
+<body>
+<div class="back"><h1 class="main-heading">My Blog</h1></div>
+<ul class="nav-bar">
+		<li class="nav-bar-item"><a class="nav-bar-item-link" href="{% url 'blog:post_list' %}">Home</a></li>
+		<li class="nav-bar-item"><a class="nav-bar-item-link" href="{% url 'blog:add_post' %}">Add Post</a></li>
+	{% if request.user.is_authenticated %}
+		<li class="nav-bar-item"><a class="nav-bar-item-link" href="{% url 'blog:my_post' %}">My Posts</a></li>
+		<li class="nav-bar-item"><a class="nav-bar-item-link" href="{% url 'blog:update_profile' %}">Update Profile</a></li>
+		<li class="nav-bar-item"><a class="nav-bar-item-link" href="{% url 'blog:my_profile' %}">My Profile</a></li>
+		<li class="nav-bar-item" style="float:right"><a class="nav-bar-item-link"  href="{% url 'logout' %}">Logout</a></li>
+	{% else %}                                      
+		<li class="nav-bar-item" style="float:right"><a class="nav-bar-item-link" href="{% url 'login' %}">Login</a></li>
+	{% endif %}
+</ul>
+<div class="body-back">
+{% block content %}
+{% endblock %}
+</div>
+<div class="foo">
+	<br>
+	<ul class="nav-bar ">
+		<li class="nav-bar-item foo-nav-bar-item-link">Contact Us At - </li>
+		<li class="nav-bar-item"><a class="foo-nav-bar-item-link" href="mailto:khanna.piyush30@gmail.com subject= Hello">Email</a></li>
+		<li class="nav-bar-item"><a class="foo-nav-bar-item-link" href="https://www.linkedin.com/in/piyushkhanna30">LinkedIn</a></li>
+		<li class="nav-bar-item"><a class="foo-nav-bar-item-link" href="https://github.com/PiyushKhanna30">Github</a></li>
+		<li class="nav-bar-item"><a class="foo-nav-bar-item-link" href="https://www.instagram.com/piyushkhanna_/">Instagram</a></li>
+		<li class="nav-bar-item"><a class="foo-nav-bar-item-link" href="https://twitter.com/PiyushKhanna30">Twitter</a></li>		
+	</ul>
+	<p style="font-size: smaller ;padding:14px 16px">Piyush Khanna 2020 ~ khanna.piyush30@gmail.com</p>
+	<br>
+</div>
+</body>
+</html>

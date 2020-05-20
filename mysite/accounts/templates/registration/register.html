@@ -1,0 +1,12 @@
+{%extends "base.html"%}
+{%block content%}
+<h1>Create an account</h1>
+<p>Please, sign up using the following form:</p>
+<form class="form" style="text-align: left; justify-content: left;" action="." method="post">
+{{ user_form.as_p|linebreaks }}
+{% csrf_token %}
+<button class="button" type="submit">Create Account</button>
+
+</form>
+
+{%endblock%}

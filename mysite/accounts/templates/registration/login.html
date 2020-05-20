@@ -1,0 +1,33 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="form-class">
+
+{% if request.user.is_authenticated %}
+	<p>Already Log-in.</p>
+{% else %}
+	<h1>Log-in</h1>
+		{% if form.errors %}
+		<p>
+		Your username and password didn't match.
+		Please try again.
+		</p>
+	{% else %}
+		<p>Use following form to login : </p>
+	{% endif %}
+			<form action="{% url 'login' %}" method="post" class="form">
+			<!-- {{ form.as_p }} -->
+			{% for field in form %}
+			       <div class="row">
+					{{field.name|lower|capfirst}}&nbsp&nbsp&nbsp{{field}}<br><br>
+			       </div>
+			{% endfor %}
+			{% csrf_token %}
+			<input type="hidden" name="next" value="{{ next }}" />
+			<button class="button" type="submit">Login</button>
+		</form>
+	
+	<p><a class="button button2" href="{% url 'password_reset' %}">Forgot Password</a>
+	<a class="button button2" href="{% url 'register' %}">New User</a></p>
+	</div>
+{% endif %}
+{%endblock%}

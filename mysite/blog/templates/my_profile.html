@@ -1,0 +1,24 @@
+{%extends "base.html"%}
+
+{%block title%}{{ user.username }}{%endblock%}
+
+{%block content%}
+<div style="display: table; padding: 5px; margin:5px;">
+	<p style="display: table-row;">Username - {{user.username}}</p>
+	<p style="display: table-row;">Name - {{user.first_name}} {{user.last_name}}</p>
+	<p style="display: table-row;">Email - {{user.email}}</p>
+	<p style="display: table-row;">Total Posts - {{posts.count}}</p>
+</div>
+{% if posts %}
+{% for post in posts %}
+<div class="article-thumbnail">
+	<p style="font-size: x-large;"><a class=" general-a" href="{{ post.get_absolute_url }}">{{ post.title|upper }}({{post.status}})</a></p>
+	<span class="small">Published on {{ post.publish }}</span>
+	<p>{{ post.body|truncatewords:50|linebreaks }}</p><br>
+</div>
+{% endfor %}
+{%else%}
+<p>No posts to show.</p>
+{%endif%}
+
+{%endblock%}

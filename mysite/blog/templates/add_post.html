@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{%block title%}My Blog{%endblock%}
+
+{%block content%}
+<div style="justify-content: left;">
+<form  method="post" class="form" >
+			{% for field in form %}
+			       <div class="row"style="justify-content: left;">
+					{{field.name|lower|capfirst}}&nbsp&nbsp&nbsp{{field}}<br><br>
+			       </div>
+			{% endfor %}
+			{% csrf_token %}
+			<button class="button" type="submit">Add</button>
+		</form>
+</div>
+{%endblock%}

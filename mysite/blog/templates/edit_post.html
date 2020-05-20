@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{%block title%}{{ post.title }}{%endblock%}
+
+{%block content%}
+
+<form method="post" class="form">
+	{% for field in form %}
+	       <div class="row">
+			{{field.name|lower|capfirst}}&nbsp&nbsp&nbsp{{field}}<br><br>
+	       </div>
+	{% endfor %}
+	{% csrf_token %}
+	<button class="button" type="submit">Save</button>
+</form>
+<div style="border: 1px solid black; margin:5px; padding: 10px;background-color:  rgba(20,20,20,0.1);border-radius: 8px; box-shadow: 2px 2px 3px black;">
+<h2 style="margin:0px;padding: 10px;background-color:  rgba(20,20,20,0.2);border-radius: 8px">Comments</h2>
+<hr noshade>
+{% if comments %}
+	{% for comment in comments %}
+		<p>Comment by <a class="general-a" href="{% url 'blog:user_details' comment.name %}">{{ comment.name }}</a ><span style="font-size: xx-small; "> {{ comment.created }}</span></p>
+		<div>{{ comment.body|linebreaks }}
+		{% if request.user.username == comment.name %}
+			<a class="general-a" href="{% url 'blog:delete_comment_nonuser' post.id comment.id %}">Delete</a>
+		{% endif %}</div><hr>
+	{% endfor %}
+{% else %}
+		<p>There are no comments yet.</p>
+{% endif %}
+</div>
+{%endblock%}

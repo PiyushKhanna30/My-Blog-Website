@@ -1,0 +1,5 @@
+{%extends "base.html"%}
+{%block content%}
+<p>Welcome <strong>{{user.username}}</strong>!</p>
+<p>Login using above username <a class="general-a" href="{% url 'login' %}">here</a>.</p>
+{%endblock%}
