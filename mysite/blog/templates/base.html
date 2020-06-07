@@ -15,7 +15,14 @@
 		<li class="nav-bar-item"><a class="nav-bar-item-link" href="{% url 'blog:my_post' %}">My Posts</a></li>
 		<li class="nav-bar-item"><a class="nav-bar-item-link" href="{% url 'blog:update_profile' %}">Update Profile</a></li>
 		<li class="nav-bar-item"><a class="nav-bar-item-link" href="{% url 'blog:my_profile' %}">My Profile</a></li>
-		<li class="nav-bar-item" style="float:right"><a class="nav-bar-item-link"  href="{% url 'logout' %}">Logout</a></li>
+
+		<li class="nav-bar-item" ><a class="nav-bar-item-link"  href="{% url 'logout' %}">Logout</a></li>
+		<li class="nav-bar-item" style="float:right; padding-top: 13px; margin-right: 10px">
+			<form method="get" action="{% url 'blog:search'  %}">
+				<input type="text" name="q" placeholder="Search..." required  />
+				<button style=" border: solid 1px black ;border-radius: 2px;" type="submit" >Search</button>
+			</form>
+		</li>
 	{% else %}                                      
 		<li class="nav-bar-item" style="float:right"><a class="nav-bar-item-link" href="{% url 'login' %}">Login</a></li>
 	{% endif %}

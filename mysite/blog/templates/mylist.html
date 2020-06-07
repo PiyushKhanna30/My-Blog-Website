@@ -1,7 +1,9 @@
 {%extends "base.html"%}
 {%block title%}My Blog{%endblock%}
 {%block content%}
-
+{% if help_text%}
+	<p>{{help_text}}</p><br>
+{% endif %}
 {% if posts %}
 {% for post in posts %}
 <div class="article-thumbnail">
@@ -13,11 +15,11 @@
 <div style="text-align: center;">
 
 {% if posts.has_previous %}
-	<a href="?page={{ posts.previous_page_number }}">Previous</a>
+	<a class="general-a" href="?page={{ posts.previous_page_number }}">Previous</a>
 {% endif %}
 	Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
 {% if posts.has_next %}
-	<a href="?page={{ posts.next_page_number }}">Next</a>
+	<a class="general-a" href="?page={{ posts.next_page_number }}">Next</a>
 {% endif %}
 {% endif %}
 </div>

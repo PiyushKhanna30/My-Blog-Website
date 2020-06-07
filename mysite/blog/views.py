@@ -10,10 +10,11 @@ from .forms import EmailPostForm, CommentForm,PostForm,EditPostForm,UserForm
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
+from django.db.models import Q
 
 @login_required
 def post_list(request):
-	posts = Post.objects.filter(status='published')
+	posts = Post.objects.filter(status='published').order_by('-created')
 	
 	paginator = Paginator(posts, 5)
 	#2 get page number
@@ -112,7 +113,7 @@ def add_post(request):
 @login_required
 def my_post(request):
 	loggedin_user = request.user
-	posts = Post.objects.filter(author=loggedin_user)
+	posts = Post.objects.filter(author=loggedin_user).order_by('-created')
 	paginator = Paginator(posts, 5)
 	page = request.GET.get('page')
 	try:
@@ -194,3 +195,8 @@ def user_details(request,username):
 	user=User.objects.get(username=username)
 	post=Post.objects.filter(author=user,status='published')
 	return render(request,'user_details.html',{'user':user,'posts':post})
+
+def search(request):
+	query=request.GET.get('q')
+	posts=Post.objects.filter(Q(title__icontains=query) | Q(body__icontains=query)).filter(status='published').order_by('-created')
+	return render(request,'slist.html',{'posts': posts})

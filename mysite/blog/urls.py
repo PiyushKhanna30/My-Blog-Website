@@ -14,11 +14,13 @@ urlpatterns = [
 	path('edit-comment/<int:post_id>/<int:comment_id>/<username>',views.delete_comment, name='delete_comment'),
 	path('view-my-post/<int:post_id>/',views.view_my_post, name='view_my_post'),
 	path('update-profile/',views.update_profile, name='update_profile'),
-	path('my_profile/',views.my_profile, name='my_profile'),
+	path('my-profile/',views.my_profile, name='my_profile'),
 
 
 	path('delete-comment/<int:post_id>/<int:comment_id>/',views.delete_comment_nonuser,name='delete_comment_nonuser'),
 	
-	path('user_details/<username>/',views.user_details, name='user_details'),
+	path('user-details/<username>/',views.user_details, name='user_details'),
+
+	path('search-post/',views.search, name='search'),
 
 ]
